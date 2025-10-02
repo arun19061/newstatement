@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="brand">
+                <div class="logo">💰</div>
+                <div>
+                    <h1>Financial Reports Generator</h1>
+                    <p class="hint">Upload multiple bank statements (CSV/Excel/PDF/JSON) to generate comprehensive financial reports</p>
+                </div>
+            </div>
+            <div class="controls">
+                <label class="file-btn">
+                    <input type="file" id="fileInput" multiple accept=".csv,.xlsx,.xls,.pdf,.json">
+                    📁 Choose Files
+                </label>
+                <button id="processBtn" class="btn primary">Generate Reports</button>
+                <button id="downloadBtn" class="btn secondary" disabled>Download ZIP</button>
+            </div>
+        </header>
+
+        <div class="upload-area" id="uploadArea">
+            <h3>📁 Drop your financial files here</h3>
+            <p>Supports: CSV, Excel, PDF, JSON files | Max 5 files at once</p>
+            <div id="fileList" class="file-list"></div>
+        </div>
+
+        <div id="status"></div>
+
+        <div class="kpis">
+            <div class="card">
+                <div class="kpi-title">Total Income</div>
+                <div class="kpi-value" id="kpiIncome">$0</div>
+            </div>
+            <div class="card">
+                <div class="kpi-title">Total Expenses</div>
+                <div class="kpi-value" id="kpiExpense">$0</div>
+            </div>
+            <div class="card">
+                <div class="kpi-title">Net Income</div>
+                <div class="kpi-value" id="kpiSavings">$0</div>
+            </div>
+            <div class="card">
+                <div class="kpi-title">Transactions</div>
+                <div class="kpi-value" id="kpiCount">0</div>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" data-tab="overview">Overview</button>
+            <button class="tab" data-tab="transactions">Transactions</button>
+            <button class="tab" data-tab="income">Income Statement</button>
+            <button class="tab" data-tab="balance">Balance Sheet</button>
+            <button class="tab" data-tab="cashflow">Cash Flow</button>
+        </div>
+
+        <div class="tab-content active" id="overview">
+            <div class="card">
+                <h3>Financial Overview</h3>
+                <div id="overviewContent"></div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="transactions">
+            <div class="card">
+                <h3>All Transactions</h3>
+                <div id="transactionList"></div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="income">
+            <div class="card">
+                <h3>Income Statement</h3>
+                <div id="incomeStatement"></div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="balance">
+            <div class="card">
+                <h3>Balance Sheet</h3>
+                <div id="balanceSheet"></div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="cashflow">
+            <div class="card">
+                <h3>Cash Flow Statement</h3>
+                <div id="cashFlowStatement"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
